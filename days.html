@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Calculate Days</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"
+    />
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+        background-color: rgba(128, 128, 128, 0.744);
+      }
+      .calculator {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 20px;
+        border-radius: 5px;
+        background-color: rgba(23, 22, 22, 0.942);
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        border-radius: 10px;
+        font-size: x-large;
+        color: white;
+      }
+      .calculator input[type="date"] {
+        margin-bottom: 10px;
+        padding: 5px 10px;
+        font-size: 14px;
+        border-radius: 5px;
+        border: 1px solid #ccc;
+      }
+      .calculator button {
+        padding: 5px 10px;
+        font-size: 14px;
+        cursor: pointer;
+        color: #fff;
+        background-color: #007bff;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.2s;
+      }
+      .calculator button:hover {
+        background-color: #0056b3;
+      }
+      .calculator p {
+        margin-top: 10px;
+        font-size: 14px;
+        color: white;
+      }
+
+      .link {
+        margin-top: 80%;
+        background-color: black;
+        color: white;
+        font-size: x-large;
+        border-radius: 5px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="calculator">
+      <h1>👇Calculate Days👇</h1>
+      <input type="date" id="startDate" class="form-control" />
+      <button onclick="calculateDays()" class="btn btn-primary">
+        Calculate
+      </button>
+      <p id="result"></p>
+    </div>
+    <a class="link" href="./home.html">back</a>
+    <script>
+      function calculateDays() {
+        var startDate = new Date(document.getElementById("startDate").value);
+        var today = new Date();
+        var timeDiff = Math.abs(today.getTime() - startDate.getTime());
+        var daysDiff = Math.ceil(timeDiff / (1000 * 3600 * 24));
+        document.getElementById("result").innerHTML =
+          "Number of days from " +
+          startDate.toLocaleDateString() +
+          " to " +
+          today.toLocaleDateString() +
+          " is " +
+          daysDiff +
+          ".";
+      }
+    </script>
+  </body>
+</html>

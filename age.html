@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Birthday Calculator</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background-color: rgba(9, 9, 9, 0.586);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+      }
+
+      .container {
+        background-color: rgb(210, 210, 217);
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 4px 6px rgba(150, 91, 91, 0.1);
+      }
+
+      .form-group {
+        margin-bottom: 15px;
+      }
+
+      .form-group label {
+        display: block;
+        margin-bottom: 5px;
+      }
+
+      .form-group input {
+        width: 100%;
+        padding: 10px;
+        font-size: 16px;
+        border: 1px solid #272626;
+        border-radius: 5px;
+      }
+
+      .btn {
+        display: inline-block;
+        padding: 10px 20px;
+        font-size: 16px;
+        background-color: #007bff;
+        color: #fff;
+        text-decoration: none;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+
+      .btn:hover {
+        background-color: #0056b3;
+      }
+
+      .link {
+        margin-top: 80%;
+        background-color: black;
+        color: white;
+        font-size: x-large;
+        border-radius: 5px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h2>👇Birthday Calculator👇</h2>
+      <form id="birthdayForm">
+        <div class="form-group">
+          <label for="birthday">Birthday:</label>
+          <input type="date" id="birthday" name="birthday" required />
+        </div>
+        <div class="form-group">
+          <label for="targetDate">Target Date:</label>
+          <input type="date" id="targetDate" name="targetDate" required />
+        </div>
+        <button type="submit" class="btn">Calculate</button>
+      </form>
+      <p id="result"></p>
+    </div>
+    <a class="link" href="./home.html">back</a>
+    <script>
+      document
+        .getElementById("birthdayForm")
+        .addEventListener("submit", function (event) {
+          event.preventDefault();
+
+          const birthday = new Date(document.getElementById("birthday").value);
+          const targetDate = new Date(
+            document.getElementById("targetDate").value
+          );
+
+          const birthdayDate = birthday.getDate();
+          const birthdayMonth = birthday.getMonth();
+          const birthdayYear = birthday.getFullYear();
+
+          const targetDateDate = targetDate.getDate();
+          const targetDateMonth = targetDate.getMonth();
+          const targetDateYear = targetDate.getFullYear();
+
+          let age;
+
+          if (
+            targetDateMonth < birthdayMonth ||
+            (targetDateMonth === birthdayMonth && targetDateDate < birthdayDate)
+          ) {
+            age = targetDateYear - birthdayYear - 1;
+          } else {
+            age = targetDateYear - birthdayYear;
+          }
+
+          document.getElementById(
+            "result"
+          ).textContent = `Age at Target Date: ${age}`;
+        });
+    </script>
+  </body>
+</html>
